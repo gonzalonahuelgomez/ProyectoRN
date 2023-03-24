@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
-import RecipesNavigator from './recipes';
+import WardrobeNavigator from './wardrobe';
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <RecipesNavigator />
+      <WardrobeNavigator />
     </NavigationContainer>
   )
 }
