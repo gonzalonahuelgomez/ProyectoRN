@@ -1,9 +1,10 @@
 class Look {
-  constructor(id, dayMoment, weather, type) {
-    this.id = id;
-    this.dayMoment = dayMoment;
-    this.weather = weather;
-    this.type = type;
+  constructor(id, dayMoment, weather, type, image) {
+    this.id = id
+    this.dayMoment = dayMoment
+    this.weather = weather
+    this.type = type  
+    this.image = image
   }
 }
 

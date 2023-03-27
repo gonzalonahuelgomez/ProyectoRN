@@ -19,7 +19,7 @@ export const init = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS looks (id INTEGER PRIMARY KEY NOT NULL, dayMoment TEXT NOT NULL, weather TEXT NOT NULL, type TEXT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);",
+        "CREATE TABLE IF NOT EXISTS looks (id INTEGER PRIMARY KEY NOT NULL, dayMoment TEXT NOT NULL, weather TEXT NOT NULL, type TEXT NOT NULL, image TEXT NOT NULL);",
         [],
         () => resolve(),
         (_, err) => reject(err)
@@ -29,12 +29,12 @@ export const init = () => {
   return promise;
 };
 
-export const insertLook = (dayMoment, weather, type) => {
+export const insertLook = (dayMoment, weather, type, image) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
-        "INSERT INTO looks (dayMoment, weather, type) VALUES (?, ?, ?);",
-        [dayMoment, weather, type],
+        "INSERT INTO looks (dayMoment, weather, type, image) VALUES (?, ?, ?, ?);",
+        [dayMoment, weather, type, image],
         (_, result) => {
           resolve(result);
         },

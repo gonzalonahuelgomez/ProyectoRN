@@ -17,7 +17,8 @@ const lookSlice = createSlice({
         action.payload.id.toString(),
         action.payload.dayMoment,
         action.payload.weather,
-        action.payload.type
+        action.payload.type,
+        action.payload.image
       );
       state.looks.push(newLook);
     },
@@ -29,12 +30,12 @@ const lookSlice = createSlice({
 
 export const { addLook, setLooks } = lookSlice.actions;
 
-export const saveLook = (dayMoment, weather, type) => {
+export const saveLook = (dayMoment, weather, type, image) => {
   return async (dispatch) => {    
     
     try {     
       const result = await insertLook(dayMoment, weather, type);
-      dispatch(addLook({ id: result.insertId, dayMoment, weather, type }));
+      dispatch(addLook({ id: result.insertId, dayMoment, weather, type, image }));
     } catch (error) {
       console.log("error", error);
       throw error;

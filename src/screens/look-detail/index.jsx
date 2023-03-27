@@ -13,6 +13,8 @@ const LookDetail = ({ navigation, route }) => {
       <View style={styles.location}>
         <View style={styles.addressContainer}>
           <Text style={styles.address}>{look.dayMoment}</Text>
+          <Text style={styles.address}>{look.weather}</Text>
+          <Text style={styles.address}>{look.type}</Text>
         </View>        
       </View>
     </ScrollView>
