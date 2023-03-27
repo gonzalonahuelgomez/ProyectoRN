@@ -1,7 +1,7 @@
 class Look {
-  constructor(id, dayornight, weather, type) {
+  constructor(id, dayMoment, weather, type) {
     this.id = id;
-    this.dayornight = dayornight;
+    this.dayMoment = dayMoment;
     this.weather = weather;
     this.type = type;
   }

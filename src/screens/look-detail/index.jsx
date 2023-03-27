@@ -12,7 +12,7 @@ const LookDetail = ({ navigation, route }) => {
       <Image source={{ uri: look.image }} style={styles.image} />
       <View style={styles.location}>
         <View style={styles.addressContainer}>
-          <Text style={styles.address}>{look.address}</Text>
+          <Text style={styles.address}>{look.dayMoment}</Text>
         </View>        
       </View>
     </ScrollView>

@@ -1,17 +1,20 @@
 import { AlleatoryLook, Home } from '../components';
+import { LookDetailScreen, LookListScreen, NewLookScreen } from '../screens';
 import { Text, TouchableOpacity, View } from 'react-native'
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { NewLookScreen } from '../screens';
 import React from 'react'
+import StackNavigator from './stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const WardrobeNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="Home">
-      <Tab.Screen
+    <Stack.Navigator>
+      {/* <Stack.Screen
         name="Home"
         component={Home}
         options={({ navigation }) => ({
@@ -25,27 +28,40 @@ const WardrobeNavigator = () => {
             </TouchableOpacity>
           ),
         })}
-      />
-      <Tab.Screen
-        name="Random Look"
-        component={AlleatoryLook}
-        options={{
-          title: "Random Look",
+      /> */}
+      <Stack.Screen
+        name="Looks"
+        component={LookListScreen}
+        options={({ navigation }) => ({
+          title: "Looks",
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={focused ? "dice-multiple" : "dice-multiple-outline"}
               size={22}
             />
           ),
-          headerShown: false,
-        }}
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("NewLook")}>
+              <MaterialCommunityIcons name="plus-circle-outline" size={25} />
+            </TouchableOpacity>
+          ),
+        })}
       />
-      <Tab.Screen
+      <Stack.Screen
         name="NewLook"
         component={NewLookScreen}
         options={{ title: "Nuevo look" }}
       />
-    </Tab.Navigator>
+      <Stack.Screen
+        name="LookDetail"
+        component={LookDetailScreen}
+        options={{ title: "Detalles del look" }}
+      />
+      {/* <Stack.Screen
+        name="Stack"
+        component={StackNavigator}
+      /> */}
+    </Stack.Navigator>
   )
 }
 

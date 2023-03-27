@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-
-// import colors from "../../utils/colors";
+import colors from "../../constants/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,8 +14,8 @@ export const styles = StyleSheet.create({
     margin: 20,
     width: "90%",
     maxWidth: 350,
-    // backgroundColor: colors.white,
-    // shadowColor: colors.black,
+    backgroundColor: colors.white,
+    shadowColor: colors.black,
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
@@ -27,7 +26,7 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   address: {
-    // color: colors.primary,
+    color: colors.primary,
     textAlign: "center",
   },
   map: {

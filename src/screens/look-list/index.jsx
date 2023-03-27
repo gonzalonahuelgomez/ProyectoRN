@@ -9,6 +9,7 @@ import { useEffect } from "react";
 const LookList = ({ navigation }) => {
   const dispatch = useDispatch();
   const looks = useSelector((state) => state.look.looks);
+  
 
   useEffect(() => {
     dispatch(loadLooks());
@@ -23,14 +24,14 @@ const LookList = ({ navigation }) => {
 
   const ListEmptyComponent = () => (
     <View style={styles.emptyContainer}>
-      <Text style={styles.emptyText}>No hay lugares</Text>
+      <Text style={styles.emptyText}>No hay looks cargados</Text>
     </View>
   );
   return (
     <FlatList
       style={styles.container}
       data={looks}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.id}
       renderItem={renderItem}
       ListEmptyComponent={ListEmptyComponent}
     />

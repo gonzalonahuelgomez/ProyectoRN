@@ -6,15 +6,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   looks: [],
 };
+console.log(initialState)
 
 const lookSlice = createSlice({
   name: "look",
   initialState,
   reducers: {
-    addPlace: (state, action) => {
+    addLook: (state, action) => {
       const newLook = new Look(
         action.payload.id.toString(),
-        action.payload.dayornight,
+        action.payload.dayMoment,
         action.payload.weather,
         action.payload.type
       );
@@ -28,14 +29,12 @@ const lookSlice = createSlice({
 
 export const { addLook, setLooks } = lookSlice.actions;
 
-export const saveLook = (dayornight, weather, type) => {
-  return async (dispatch) => {
+export const saveLook = (dayMoment, weather, type) => {
+  return async (dispatch) => {    
     
-    
-    try {
-     
-      const result = await insertLook(dayornight, weather, type);
-      dispatch(addLook({ id: result.insertId, dayornight, weather, type }));
+    try {     
+      const result = await insertLook(dayMoment, weather, type);
+      dispatch(addLook({ id: result.insertId, dayMoment, weather, type }));
     } catch (error) {
       console.log("error", error);
       throw error;
