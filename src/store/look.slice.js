@@ -6,7 +6,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   looks: [],
 };
-console.log(initialState)
 
 const lookSlice = createSlice({
   name: "look",
@@ -21,6 +20,8 @@ const lookSlice = createSlice({
         action.payload.image
       );
       state.looks.push(newLook);
+      console.log(newLook)
+      console.log(state.looks)
     },
     setLooks: (state, action) => {
       state.looks = action.payload;
@@ -34,7 +35,7 @@ export const saveLook = (dayMoment, weather, type, image) => {
   return async (dispatch) => {    
     
     try {     
-      const result = await insertLook(dayMoment, weather, type);
+      const result = await insertLook(dayMoment, weather, type, image);
       dispatch(addLook({ id: result.insertId, dayMoment, weather, type, image }));
     } catch (error) {
       console.log("error", error);

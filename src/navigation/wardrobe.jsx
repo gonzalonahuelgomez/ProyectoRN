@@ -34,12 +34,12 @@ const WardrobeNavigator = () => {
         component={LookListScreen}
         options={({ navigation }) => ({
           title: "Looks",
-          tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name={focused ? "dice-multiple" : "dice-multiple-outline"}
-              size={22}
-            />
-          ),
+          // tabBarIcon: ({ focused }) => (
+          //   <MaterialCommunityIcons
+          //     name={focused ? "dice-multiple" : "dice-multiple-outline"}
+          //     size={22}
+          //   />
+          // ),
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate("NewLook")}>
               <MaterialCommunityIcons name="plus-circle-outline" size={25} />
@@ -50,12 +50,12 @@ const WardrobeNavigator = () => {
       <Stack.Screen
         name="NewLook"
         component={NewLookScreen}
-        options={{ title: "Nuevo look" }}
+        options={{ title: "New look" }}
       />
       <Stack.Screen
         name="LookDetail"
         component={LookDetailScreen}
-        options={{ title: "Detalles del look" }}
+        options={{ title: "Look details" }}
       />
       {/* <Stack.Screen
         name="Stack"

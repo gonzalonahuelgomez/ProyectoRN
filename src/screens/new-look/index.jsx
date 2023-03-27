@@ -19,7 +19,7 @@ const NewLook = ({ navigation }) => {
     setImage(imageUrl);
   };
 
-  const onHandleSubmit = () => {
+  const onHandleSubmit = () => {    
     dispatch(saveLook(dayMoment, weather, type, image));
     navigation.navigate("Looks");
   };
@@ -27,7 +27,7 @@ const NewLook = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.contentText}>Momento del día:</Text>
+        <Text style={styles.contentText}>Moment of the day:</Text>
         <SwitchSelector
           initial={0}
           onPress={(value) => setDayMoment(value)}
@@ -37,38 +37,38 @@ const NewLook = ({ navigation }) => {
           // borderColor={colors.purple}
           hasPadding
           options={[
-            { label: "Mañana", value: "morning" },
-            { label: "Tarde", value: "afternoon" },
-            { label: "Noche", value: "night" },
+            { label: "Morning", value: "Morning" },
+            { label: "Afternoon", value: "Afternoon" },
+            { label: "Night", value: "Night" },
           ]}
           // accessibilityLabel="gender-switch-selector"
         />
-        <Text style={styles.contentText}>Clima:</Text>
+        <Text style={styles.contentText}>Weather:</Text>
         <SwitchSelector
           initial={0}
           onPress={(value) => setWeather(value)}
           buttonColor={colors.primary}     
           hasPadding
           options={[
-            { label: "Calor", value: "hot" },
-            { label: "Frío", value: "cold" },
+            { label: "Hot", value: "Hot" },
+            { label: "Cold", value: "Cold" },
           ]}          
         />
-        <Text style={styles.contentText}>Tipo de vestimenta:</Text>
+        <Text style={styles.contentText}>Clothing types:</Text>
         <SwitchSelector
           initial={0}
           onPress={(value) => setType(value)} 
           buttonColor={colors.primary}        
           hasPadding
           options={[
-            { label: "Casual", value: "casual" },
-            { label: "Cóctel", value: "coctel" },
-            { label: "Profesional", value: "professional" },
-            { label: "Etiqueta", value: "formal" },
+            { label: "Casual", value: "Casual" },
+            { label: "Coctel", value: "Coctel" },
+            { label: "Professional", value: "Professional" },
+            { label: "Formal", value: "Formal" },
           ]}
         />
         <ImageTaker onImage={onHandleImageSelect} />
-        <Button title="Guardar Look" onPress={onHandleSubmit} />
+        <Button title="Save Look" onPress={onHandleSubmit} />
       </View>
     </ScrollView>
   );

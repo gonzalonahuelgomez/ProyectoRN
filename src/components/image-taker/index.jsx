@@ -15,7 +15,7 @@ const ImageTaker = ({ onImage }) => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
-      Alert.alert("Permiso denegado", "Necesitamos permisos para usar la cámara", [{ text: "Ok" }]);
+      Alert.alert("Permission denied", "We need permissions to use the camera", [{ text: "Ok" }]);
       return;
     }
 
@@ -31,7 +31,7 @@ const ImageTaker = ({ onImage }) => {
   const onHandleChooseImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== 'granted') {
-          alert("Permiso denegado", "Necesitamos permisos para usar la galería", [{ text: "Ok" }]);
+          alert("Permission denied", "We need permissions to use the gallery", [{ text: "Ok" }]);
           return;
         }
 
@@ -39,23 +39,24 @@ const ImageTaker = ({ onImage }) => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       quality: 0.7,
     });
-    console.log(image.assets[0].uri)
-    setPickedUrl(image.assets[0].uri);
-    onImage(image.assets[0].uri);    
+    let imageUri = image.assets[0].uri
+    
+    setPickedUrl(imageUri);
+    onImage(imageUri);    
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.preview}>
         {!pickedUrl ? (
-          <Text>No hay imagen seleccionada</Text>
+          <Text>No image selected</Text>
         ) : (
           <Image style={styles.image} source={{ uri: pickedUrl }} />
         )}
       </View>
       <View style={styles.containerActions}>
-        <Button title="Tomar foto" color={colors.secondary} onPress={onHandleTakeImage} />
-        <Button title="Elegir foto de la galería" color={colors.primary} onPress={onHandleChooseImage} />
+        <Button title="Take image" color={colors.secondary} onPress={onHandleTakeImage} />
+        <Button title="Pick image" color={colors.primary} onPress={onHandleChooseImage} />
       </View>
     </View>
   );
